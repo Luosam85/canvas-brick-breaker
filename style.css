@@ -1,0 +1,39 @@
+/* 讓遊戲置中，並使用深色背景凸顯 Canvas。 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f8fafc;
+  background: #0f172a;
+  font-family: Arial, "Noto Sans TC", sans-serif;
+}
+
+.game-container {
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+.instructions {
+  margin: 0 0 16px;
+  color: #cbd5e1;
+}
+
+canvas {
+  display: block;
+  width: 800px;
+  height: 600px;
+  max-width: calc(100vw - 32px);
+  border: 3px solid #38bdf8;
+  border-radius: 8px;
+  background: #111827;
+  box-shadow: 0 12px 35px rgb(0 0 0 / 35%);
+}
