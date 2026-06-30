@@ -15,6 +15,7 @@ body {
 }
 
 .game-container {
+  position: relative;
   text-align: center;
 }
 
@@ -36,4 +37,62 @@ canvas {
   border-radius: 8px;
   background: #111827;
   box-shadow: 0 12px 35px rgb(0 0 0 / 35%);
+}
+
+/* 難度選擇面板疊在遊戲畫面上方。 */
+.difficulty-panel {
+  position: absolute;
+  z-index: 2;
+  top: 110px;
+  left: 50%;
+  width: min(600px, calc(100% - 48px));
+  padding: 28px;
+  transform: translateX(-50%);
+  border: 2px solid #38bdf8;
+  border-radius: 16px;
+  background: rgb(15 23 42 / 96%);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 50%);
+}
+
+.difficulty-panel h2 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.difficulty-panel p {
+  color: #cbd5e1;
+}
+
+.difficulty-panel[hidden] {
+  display: none;
+}
+
+.difficulty-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.difficulty-buttons button {
+  flex: 1;
+  min-height: 82px;
+  border: 0;
+  border-radius: 10px;
+  color: #0f172a;
+  background: #7dd3fc;
+  font: bold 18px Arial, sans-serif;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.difficulty-buttons button:hover,
+.difficulty-buttons button:focus-visible {
+  transform: translateY(-3px);
+  background: #bae6fd;
+  outline: 3px solid #f8fafc;
+}
+
+.difficulty-buttons small {
+  font-weight: normal;
 }
