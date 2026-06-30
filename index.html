@@ -9,7 +9,18 @@
 <body>
   <main class="game-container">
     <h1>Canvas 打磚塊</h1>
-    <p class="instructions">使用 ← → 控制板子，球掉落後按空白鍵重新開始</p>
+    <p class="instructions">← → 移動板子｜空白鍵發射子彈｜接住掉落道具強化自己</p>
+
+    <!-- 開始畫面：選擇難度後才會啟動遊戲。 -->
+    <section id="difficultyPanel" class="difficulty-panel" aria-labelledby="difficultyTitle">
+      <h2 id="difficultyTitle">選擇難度</h2>
+      <p>難度會影響生命、球速與磚塊耐久。</p>
+      <div class="difficulty-buttons">
+        <button type="button" data-difficulty="easy">簡單<br><small>5 生命・慢速</small></button>
+        <button type="button" data-difficulty="normal">普通<br><small>3 生命・標準</small></button>
+        <button type="button" data-difficulty="hard">困難<br><small>1 生命・高速</small></button>
+      </div>
+    </section>
 
     <!-- 遊戲畫面由 JavaScript 畫在這個 Canvas 上。 -->
     <canvas id="gameCanvas" width="800" height="600" aria-label="打磚塊遊戲畫面">
