@@ -3,7 +3,17 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const difficultyPanel = document.getElementById("difficultyPanel");
 
+// 取得球速滑桿元素。
+const speedSlider = document.getElementById("speedSlider");
+const speedValDisplay = document.getElementById("speedVal");
+
+// 滑桿數值即時更新顯示。
+speedSlider.addEventListener("input", () => {
+  speedValDisplay.textContent = parseFloat(speedSlider.value).toFixed(1) + "x";
+});
+
 // 三種難度會改變生命、球速和耐久磚塊出現的機率。
+// 球速會再乘上玩家設定的倍率。
 const difficultySettings = {
   easy: { label: "簡單", lives: 5, ballSpeed: 3.5, hardBrickChance: 0.2 },
   normal: { label: "普通", lives: 3, ballSpeed: 4.5, hardBrickChance: 0.38 },
@@ -64,8 +74,10 @@ function createBricks() {
   }
 }
 
+// 球速 = 難度基礎速度 × 玩家設定的倍率。
 function resetBallAndPaddle() {
-  const speed = difficultySettings[difficulty].ballSpeed;
+  const speedMult = parseFloat(speedSlider.value);
+  const speed = difficultySettings[difficulty].ballSpeed * speedMult;
   paddle.width = paddle.normalWidth;
   paddle.extendedUntil = 0;
   paddle.x = (canvas.width - paddle.width) / 2;
@@ -131,6 +143,7 @@ function drawBricks() {
 }
 
 function drawHud() {
+  const mult = parseFloat(speedSlider.value).toFixed(1);
   ctx.fillStyle = "#f8fafc";
   ctx.font = "bold 18px Arial";
   ctx.textAlign = "left";
@@ -143,6 +156,11 @@ function drawHud() {
 
   ctx.fillStyle = ammo > 0 ? "#fbbf24" : "#94a3b8";
   ctx.fillText(`子彈：${ammo}`, 600, 32);
+
+  // 右上角顯示目前球速倍率。
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "14px Arial";
+  ctx.fillText(`球速：${mult}x`, 695, 32);
 }
 
 // 道具圖示：紅色生命、黃色子彈、綠色平台藥水。
