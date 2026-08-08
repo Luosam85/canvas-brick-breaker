@@ -10,24 +10,26 @@
   <main class="game-container">
     <h1>Canvas 打磚塊</h1>
     <p class="instructions">← → 移動板子｜空白鍵發射子彈｜接住掉落道具強化自己</p>
-
     <!-- 開始畫面：選擇難度後才會啟動遊戲。 -->
     <section id="difficultyPanel" class="difficulty-panel" aria-labelledby="difficultyTitle">
       <h2 id="difficultyTitle">選擇難度</h2>
       <p>難度會影響生命、球速與磚塊耐久。</p>
+      <div class="speed-control">
+        <label for="speedSlider">球速倍率：<span id="speedVal">1.0x</span></label>
+        <input type="range" id="speedSlider" min="0.4" max="1.6" step="0.1" value="1.0">
+        <p><small>調低讓球變慢，三種難度都會跟著縮放</small></p>
+      </div>
       <div class="difficulty-buttons">
         <button type="button" data-difficulty="easy">簡單<br><small>5 生命・慢速</small></button>
         <button type="button" data-difficulty="normal">普通<br><small>3 生命・標準</small></button>
         <button type="button" data-difficulty="hard">困難<br><small>1 生命・高速</small></button>
       </div>
     </section>
-
     <!-- 遊戲畫面由 JavaScript 畫在這個 Canvas 上。 -->
     <canvas id="gameCanvas" width="800" height="600" aria-label="打磚塊遊戲畫面">
       你的瀏覽器不支援 Canvas，請改用較新的瀏覽器。
     </canvas>
   </main>
-
   <script src="game.js"></script>
 </body>
 </html>
